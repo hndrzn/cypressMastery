@@ -83,7 +83,7 @@ Cypress.Commands.add('dynamicScreenshot', (prefix) => {
     const day = String(date.getDate()).padStart(2, '0');
     const year = date.getFullYear().toString().slice(-2);
     const formattedDate = `${month}-${day}-${year}`;
-    const fileName = `${prefix}-${formattedDate}.png`;
+    const fileName = `${prefix}-${formattedDate}`;
   
     cy.screenshot(fileName);
   });
