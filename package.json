@@ -4,8 +4,9 @@
   "description": "cypress practice",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1" ,
-    "login-test": "npx cypress run  --spec 'cypress/e2e/login.cy.js' --browser chrome"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "login-test": "npx cypress run  --spec 'cypress/e2e/login.cy.js' --browser chrome",
+    "addToCartAndCheckout-test": "npx cypress run  --spec 'cypress/e2e/addToCartAndCheckout.cy.js' --browser chrome"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,8 @@
   "homepage": "https://github.com/hndrzn/cypressMastery#readme",
   "dependencies": {
     "cypress": "^14.2.1"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.8.2"
   }
 }
