@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "login-test": "npx cypress run  --spec 'cypress/e2e/login.cy.js' --browser chrome",
-    "addToCartAndCheckout-test": "npx cypress run  --spec 'cypress/e2e/addToCartAndCheckout.cy.js' --browser chrome"
+    "addToCartAndCheckout-test": "npx cypress run  --spec 'cypress/e2e/addToCartAndCheckout.cy.js' --browser chrome",
+    "parabankReg-test": "npx cypress run  --spec 'cypress/e2e/parabankRegistration.cy.js' --browser chrome",
+    "parabankRegFixtures-test": "npx cypress run  --spec 'cypress/e2e/parabankRegistrationFixtures.cy.js' --browser chrome"
   },
   "repository": {
     "type": "git",
@@ -20,9 +22,11 @@
   },
   "homepage": "https://github.com/hndrzn/cypressMastery#readme",
   "dependencies": {
-    "cypress": "^14.2.1"
+    "cypress": "^14.3.0",
+    "cypress-xpath": "^2.0.1"
   },
   "devDependencies": {
+    "@cypress/xpath": "^2.0.3",
     "cypress-mochawesome-reporter": "^3.8.2"
   }
 }
