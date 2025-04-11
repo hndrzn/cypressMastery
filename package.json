@@ -8,7 +8,8 @@
     "login-test": "npx cypress run  --spec 'cypress/e2e/login.cy.js' --browser chrome",
     "addToCartAndCheckout-test": "npx cypress run  --spec 'cypress/e2e/addToCartAndCheckout.cy.js' --browser chrome",
     "parabankReg-test": "npx cypress run  --spec 'cypress/e2e/parabankRegistration.cy.js' --browser chrome",
-    "parabankRegFixtures-test": "npx cypress run  --spec 'cypress/e2e/parabankRegistrationFixtures.cy.js' --browser chrome"
+    "parabankRegFixtures-test": "npx cypress run  --spec 'cypress/e2e/parabankRegistrationFixtures.cy.js' --browser chrome",
+    "parabankFaker-test": "npx cypress run  --spec 'cypress/e2e/parabankRegistrationFaker.cy.js' --browser chrome"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@cypress/xpath": "^2.0.3",
+    "@faker-js/faker": "^9.6.0",
     "cypress-mochawesome-reporter": "^3.8.2"
   }
 }

@@ -24,6 +24,8 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+import { generateData } from './generatedFakerCredentials';
+
 Cypress.Commands.add('auth', (username, password) => { // FUNCTION OR METHOD --> Then i-call natin sya sa spec or test file natin.
     cy.visit('https://www.saucedemo.com/', {timeout: 240000})
       cy.get('[data-test="username"]').type(username)
@@ -114,7 +116,7 @@ Cypress.Commands.add('parabankRegister', (firstName, lastName, street, city, sta
 
     cy.contains("Your account was created successfully. You are now logged in.")
     .should('be.visible')
-  });
+});
 
 Cypress.Commands.add('parabankLogin', (username, password) => {
       // Navigates to the Parabank Registration/Log-in Website
@@ -129,4 +131,10 @@ Cypress.Commands.add('parabankLogin', (username, password) => {
      cy.get(':nth-child(5) > .button').should('be.visible').click()
       // Verify that user is logged-in
      cy.get('.smallText').should('be.visible').contains('Welcome')
-  });
+});
+
+
+Cypress.Commands.add('generateFakerData', () => {
+  const fakerData = generateData();
+  cy.writeFile('cypress/fixtures/fakerData.json', fakerData);
+});
