@@ -25,7 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import { generateData } from './generatedFakerCredentials';
-import { generateCheckoutData } from './generatedFakerCredentialsAutomationWebsite';
+import { placeOrderData } from './generatedFakerCredentialsAutomationWebsite';
 
 Cypress.Commands.add('auth', (username, password) => { // FUNCTION OR METHOD --> Then i-call natin sya sa spec or test file natin.
     cy.visit('https://www.saucedemo.com/', {timeout: 240000})
@@ -134,14 +134,13 @@ Cypress.Commands.add('parabankLogin', (username, password) => {
      cy.get('.smallText').should('be.visible').contains('Welcome')
 });
 
-
 Cypress.Commands.add('generateFakerData', () => {
   const fakerData = generateData();
   cy.writeFile('cypress/fixtures/fakerData.json', fakerData);
 });
 
-
-Cypress.Commands.add('generateCheckoutData', () => {
-  const fakerData = generateCheckoutData();
-  cy.writeFile('cypress/fixtures/checkoutData.json', fakerData);
+Cypress.Commands.add('placeOrderProcess', () => {
+  cy.visit('https://automationexercise.com/');    
+  const fakerData = placeOrderData();
+  cy.writeFile('cypress/fixtures/placeOrderData.json', fakerData);
 });

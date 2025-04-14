@@ -9,7 +9,8 @@
     "addToCartAndCheckout-test": "npx cypress run  --spec 'cypress/e2e/addToCartAndCheckout.cy.js' --browser chrome",
     "parabankReg-test": "npx cypress run  --spec 'cypress/e2e/parabankRegistration.cy.js' --browser chrome",
     "parabankRegFixtures-test": "npx cypress run  --spec 'cypress/e2e/parabankRegistrationFixtures.cy.js' --browser chrome",
-    "parabankFaker-test": "npx cypress run  --spec 'cypress/e2e/parabankRegistrationFaker.cy.js' --browser chrome"
+    "parabankFaker-test": "npx cypress run  --spec 'cypress/e2e/parabankRegistrationFaker.cy.js' --browser chrome",
+    "placeOrderCheckout-test": "npx cypress run  --spec 'cypress/e2e/automationExerciseCheckout.cy.js' --browser chrome"
   },
   "repository": {
     "type": "git",
