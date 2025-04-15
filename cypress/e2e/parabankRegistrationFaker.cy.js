@@ -37,7 +37,7 @@ describe('Parabank Website Registration Test with Faker Data', () => {
     })
 
     it('Should successfully log-in with faker data', () => {
-        cy.fixture('fakerData').then((fakerData) => {
+      cy.fixture('fakerData').then((fakerData) => {
         // Navigates to the Parabank Registration/Log-in Website
         cy.visit('https://parabank.parasoft.com/parabank/register.htm');
           
