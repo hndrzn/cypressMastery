@@ -382,7 +382,7 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
       // Take screenshot
       cy.dynamicScreenshot('Automation_Exercise_Website_TC-15');
     });
-
+    
     // Test Case 16: Place Order: Login before Checkout
     it('Should Place Order: Login before Checkout', () => {
       cy.readFile('cypress/fixtures/placeOrderData.json').then((fakerData) => {
