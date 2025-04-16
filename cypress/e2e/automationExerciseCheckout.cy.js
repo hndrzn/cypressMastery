@@ -53,8 +53,8 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
         cy.url().should('include', 'login');
   
         // Enter registration details 
-        cy.get('[data-qa="signup-name"]').type(fakerData.username);
-        cy.get('[data-qa="signup-email"]').type(fakerData.email);
+        cy.get('[data-qa="signup-name"]').type(fakerData.username).should('have.value', fakerData.username);
+        cy.get('[data-qa="signup-email"]').type(fakerData.email).should('have.value', fakerData.email);
   
         // Verify that the 'Signup' button is displayed, then click
         cy.get('[data-qa="signup-button"]').should('be.visible').click();
@@ -72,44 +72,54 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
 
         // Selecting either of the two radio buttons
         cy.get(genderSelectors[Math.floor(Math.random() * genderSelectors.length)])
-        .should('be.visible')
-        .click(); 
+          .should('be.visible')
+          .click(); 
         
-        cy.get('[data-qa="password"]').should('be.visible').type(fakerData.password);
+        cy.get('[data-qa="password"]').should('be.visible').type(fakerData.password).should('have.value', fakerData.password);
         
-        cy.get('[data-qa="days"] option').then((options) => {
+        cy.get('[data-qa="days"] option')
+          .should('be.visible')
+          .then((options) => {
           const randomIndex = Math.floor(Math.random() * options.length); 
-          cy.get('[data-qa="days"]').select(options[randomIndex].value);
+          cy.get('[data-qa="days"]').select(options[randomIndex].value)
+            .should('have.value', options[randomIndex].value);
         });
         
-        cy.get('[data-qa="months"] option').then((options) => {
+        cy.get('[data-qa="months"] option')
+          .should('be.visible')
+          .then((options) => {
           const randomIndex = Math.floor(Math.random() * options.length); 
-          cy.get('[data-qa="months"]').select(options[randomIndex].value);
+          cy.get('[data-qa="months"]').select(options[randomIndex].value)
+            .should('have.value', options[randomIndex].value);
         });
         
-        cy.get('[data-qa="years"] option').then((options) => {
+        cy.get('[data-qa="years"] option')
+          .should('be.visible')
+          .then((options) => {
           const randomIndex = Math.floor(Math.random() * options.length); 
-          cy.get('[data-qa="years"]').select(options[randomIndex].value); 
+          cy.get('[data-qa="years"]').select(options[randomIndex].value)
+            .should('have.value', options[randomIndex].value);
         });
         
-        cy.get('[data-qa="first_name"]').should('be.visible').type(fakerData.firstName);
-        cy.get('[data-qa="last_name"]').should('be.visible').type(fakerData.lastName);
-        cy.get('[data-qa="company"]').should('be.visible').type(fakerData.company);
-        cy.get('[data-qa="address"]').should('be.visible').type(fakerData.address);
-        cy.get('[data-qa="address2"]').should('be.visible').type(fakerData.address2);
+        cy.get('[data-qa="first_name"]').should('be.visible').type(fakerData.firstName).should('have.value', fakerData.firstName);
+        cy.get('[data-qa="last_name"]').should('be.visible').type(fakerData.lastName).should('have.value', fakerData.lastName);
+        cy.get('[data-qa="company"]').should('be.visible').type(fakerData.company).should('have.value', fakerData.company);
+        cy.get('[data-qa="address"]').should('be.visible').type(fakerData.address).should('have.value', fakerData.address);
+        cy.get('[data-qa="address2"]').should('be.visible').type(fakerData.address2).should('have.value', fakerData.address2);
         
         cy.get('[data-qa="country"]')
-        .should('be.visible')
-        .find('option')
-        .then((options) => {
+          .should('be.visible')
+          .find('option')
+          .then((options) => {
           const randomCountry = options[Math.floor(Math.random() * options.length)].value;
-          cy.get('[data-qa="country"]').select(randomCountry);
+          cy.get('[data-qa="country"]').select(randomCountry)
+            .should('have.value', randomCountry);
         });      
         
-        cy.get('[data-qa="state"]').should('be.visible').type(fakerData.state);
-        cy.get('[data-qa="city"]').should('be.visible').type(fakerData.city);
-        cy.get('[data-qa="zipcode"]').should('be.visible').type(fakerData.zipCode);
-        cy.get('[data-qa="mobile_number"]').should('be.visible').type(fakerData.phoneNumber);
+        cy.get('[data-qa="state"]').should('be.visible').type(fakerData.state).should('have.value', fakerData.state);
+        cy.get('[data-qa="city"]').should('be.visible').type(fakerData.city).should('have.value', fakerData.city);
+        cy.get('[data-qa="zipcode"]').should('be.visible').type(fakerData.zipCode).should('have.value', fakerData.zipCode);
+        cy.get('[data-qa="mobile_number"]').should('be.visible').type(fakerData.phoneNumber).should('have.value', fakerData.phoneNumber);
   
         // Verify that 'Create Account' button is visible, then click
         cy.get('[data-qa="create-account"]').should('be.visible').click();
@@ -126,6 +136,9 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
         // Verify 'Logged in as Username' message
         cy.get(':nth-child(10) > a').should('be.visible')
           .should('contain', `Logged in as ${fakerData.username}`);
+
+        // Take Screenshot
+        cy.dynamicScreenshot('Automation_Exercise_Website_TC-14_Login-Success');
   
         // Locate the 'Cart' tab, then click
         cy.get('.shop-menu > .nav > :nth-child(3) > a').should('be.visible').click({ force: true });
@@ -165,11 +178,11 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
         cy.url().should('include', '/payment');
 
         // Enter payment details
-        cy.get('[data-qa="name-on-card"]').should('be.visible').type(fakerData.fullName);
-        cy.get('[data-qa="card-number"]').should('be.visible').type(fakerData.cardNumber);
-        cy.get('[data-qa="cvc"]').should('be.visible').type(fakerData.cvc);
-        cy.get('[data-qa="expiry-month"]').should('be.visible').type(fakerData.expiryMonth);
-        cy.get('[data-qa="expiry-year"]').should('be.visible').type(fakerData.expiryYear);
+        cy.get('[data-qa="name-on-card"]').should('be.visible').type(fakerData.fullName).should('have.value', fakerData.fullName);
+        cy.get('[data-qa="card-number"]').should('be.visible').type(fakerData.cardNumber).should('have.value', fakerData.cardNumber);
+        cy.get('[data-qa="cvc"]').should('be.visible').type(fakerData.cvc).should('have.value', fakerData.cvc);
+        cy.get('[data-qa="expiry-month"]').should('be.visible').type(fakerData.expiryMonth).should('have.value', fakerData.expiryMonth);
+        cy.get('[data-qa="expiry-year"]').should('be.visible').type(fakerData.expiryYear).should('have.value', fakerData.expiryYear);
         cy.get('[data-qa="pay-button"]').should('be.visible').click();
 
         // // Verify 'Your order has been placed successfully!' message is displayed
@@ -178,6 +191,9 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
   
         // Verify that payment is successful
         cy.url().should('include', 'payment_done');
+
+        // Take Screenshot
+        cy.dynamicScreenshot('Automation_Exercise_Website_TC-14_Payment-Successful');
   
         // Locate the 'Continue' button and click
         cy.get('[data-qa="continue-button"]').should('be.visible').click({ force: true });
@@ -191,12 +207,15 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
         // Verify 'Account Created!' message is displayed
         cy.contains('Account Deleted!');
 
+        // Take screenshot
+        cy.dynamicScreenshot('Automation_Exercise_Website_TC-14_Account-Deleted');
+
         // Click the 'Continue' button
         cy.get('[data-qa="continue-button"]').should('be.visible')
           .click();
 
         // Take screenshot
-        cy.dynamicScreenshot('Automation_Exercise_Website_TC-14');
+        cy.dynamicScreenshot('Automation_Exercise_Website_TC-14_End');
       });
     });
 
@@ -222,8 +241,8 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
         cy.url().should('include', 'login');
   
         // Enter registration details
-        cy.get('[data-qa="signup-name"]').type(fakerData.username);
-        cy.get('[data-qa="signup-email"]').type(fakerData.email);
+        cy.get('[data-qa="signup-name"]').type(fakerData.username).should('have.value', fakerData.username);
+        cy.get('[data-qa="signup-email"]').type(fakerData.email).should('have.value', fakerData.email);
   
         // Verify that the 'Signup' button is displayed, then click
         cy.get('[data-qa="signup-button"]').should('be.visible').click();
@@ -241,44 +260,54 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
 
         // Selecting either of the two radio buttons
         cy.get(genderSelectors[Math.floor(Math.random() * genderSelectors.length)])
-        .should('be.visible')
-        .click(); 
+          .should('be.visible')
+          .click(); 
         
-        cy.get('[data-qa="password"]').should('be.visible').type(fakerData.password);
+        cy.get('[data-qa="password"]').should('be.visible').type(fakerData.password).should('have.value', fakerData.password);
         
-        cy.get('[data-qa="days"] option').then((options) => {
+        cy.get('[data-qa="days"] option')
+          .should('be.visible')
+          .then((options) => {
           const randomIndex = Math.floor(Math.random() * options.length); 
-          cy.get('[data-qa="days"]').select(options[randomIndex].value);
+          cy.get('[data-qa="days"]').select(options[randomIndex].value)
+            .should('have.value', options[randomIndex].value);
         });
         
-        cy.get('[data-qa="months"] option').then((options) => {
+        cy.get('[data-qa="months"] option')
+          .should('be.visible')
+          .then((options) => {
           const randomIndex = Math.floor(Math.random() * options.length); 
-          cy.get('[data-qa="months"]').select(options[randomIndex].value);
+          cy.get('[data-qa="months"]').select(options[randomIndex].value)
+            .should('have.value', options[randomIndex].value);
         });
         
-        cy.get('[data-qa="years"] option').then((options) => {
+        cy.get('[data-qa="years"] option')
+          .should('be.visible')
+          .then((options) => {
           const randomIndex = Math.floor(Math.random() * options.length); 
-          cy.get('[data-qa="years"]').select(options[randomIndex].value); 
+          cy.get('[data-qa="years"]').select(options[randomIndex].value)
+            .should('have.value', options[randomIndex].value); 
         });
         
-        cy.get('[data-qa="first_name"]').should('be.visible').type(fakerData.firstName);
-        cy.get('[data-qa="last_name"]').should('be.visible').type(fakerData.lastName);
-        cy.get('[data-qa="company"]').should('be.visible').type(fakerData.company);
-        cy.get('[data-qa="address"]').should('be.visible').type(fakerData.address);
-        cy.get('[data-qa="address2"]').should('be.visible').type(fakerData.address2);
+        cy.get('[data-qa="first_name"]').should('be.visible').type(fakerData.firstName).should('have.value', fakerData.firstName);
+        cy.get('[data-qa="last_name"]').should('be.visible').type(fakerData.lastName).should('have.value', fakerData.lastName);
+        cy.get('[data-qa="company"]').should('be.visible').type(fakerData.company).should('have.value', fakerData.company);
+        cy.get('[data-qa="address"]').should('be.visible').type(fakerData.address).should('have.value', fakerData.address);
+        cy.get('[data-qa="address2"]').should('be.visible').type(fakerData.address2).should('have.value', fakerData.address2);
         
         cy.get('[data-qa="country"]')
-        .should('be.visible')
-        .find('option')
-        .then((options) => {
+          .should('be.visible')
+          .find('option')
+          .then((options) => {
           const randomCountry = options[Math.floor(Math.random() * options.length)].value;
-          cy.get('[data-qa="country"]').select(randomCountry);
+          cy.get('[data-qa="country"]').select(randomCountry)
+            .should('have.value', randomCountry);
         });      
         
-        cy.get('[data-qa="state"]').should('be.visible').type(fakerData.state);
-        cy.get('[data-qa="city"]').should('be.visible').type(fakerData.city);
-        cy.get('[data-qa="zipcode"]').should('be.visible').type(fakerData.zipCode);
-        cy.get('[data-qa="mobile_number"]').should('be.visible').type(fakerData.phoneNumber);
+        cy.get('[data-qa="state"]').should('be.visible').type(fakerData.state).should('have.value', fakerData.state);
+        cy.get('[data-qa="city"]').should('be.visible').type(fakerData.city).should('have.value', fakerData.city);
+        cy.get('[data-qa="zipcode"]').should('be.visible').type(fakerData.zipCode).should('have.value', fakerData.zipCode);
+        cy.get('[data-qa="mobile_number"]').should('be.visible').type(fakerData.phoneNumber).should('have.value', fakerData.phoneNumber);
   
         // Verify that 'Create Account' button is visible, then click
         cy.get('[data-qa="create-account"]').should('be.visible').click();
@@ -295,6 +324,9 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
         // Verify 'Logged in as Username' message
         cy.get(':nth-child(10) > a').should('be.visible')
           .should('contain', `Logged in as ${fakerData.username}`);
+
+        // Take Screenshot
+        cy.dynamicScreenshot('Automation_Exercise_Website_TC-15_Login-Success');
 
         // Verify that the product is visible
         cy.get(':nth-child(29) > .product-image-wrapper > .single-products > .productinfo').should('be.visible');
@@ -348,11 +380,11 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
         cy.url().should('include', '/payment');
  
         // Enter payment details
-        cy.get('[data-qa="name-on-card"]').should('be.visible').type(fakerData.fullName);
-        cy.get('[data-qa="card-number"]').should('be.visible').type(fakerData.cardNumber);
-        cy.get('[data-qa="cvc"]').should('be.visible').type(fakerData.cvc);
-        cy.get('[data-qa="expiry-month"]').should('be.visible').type(fakerData.expiryMonth);
-        cy.get('[data-qa="expiry-year"]').should('be.visible').type(fakerData.expiryYear);
+        cy.get('[data-qa="name-on-card"]').should('be.visible').type(fakerData.fullName).should('have.value', fakerData.fullName);
+        cy.get('[data-qa="card-number"]').should('be.visible').type(fakerData.cardNumber).should('have.value', fakerData.cardNumber);
+        cy.get('[data-qa="cvc"]').should('be.visible').type(fakerData.cvc).should('have.value', fakerData.cvc);
+        cy.get('[data-qa="expiry-month"]').should('be.visible').type(fakerData.expiryMonth).should('have.value', fakerData.expiryMonth);
+        cy.get('[data-qa="expiry-year"]').should('be.visible').type(fakerData.expiryYear).should('have.value', fakerData.expiryYear);
         cy.get('[data-qa="pay-button"]').should('be.visible').click();
  
          // // Verify 'Your order has been placed successfully!' message is displayed
@@ -361,6 +393,9 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
    
         // Verify that payment is successful
         cy.url().should('include', 'payment_done');
+
+        // Take Screenshot
+        cy.dynamicScreenshot('Automation_Exercise_Website_TC-15_Payment-Successful');
    
         // Locate the 'Continue' button and click
         cy.get('[data-qa="continue-button"]').should('be.visible').click({ force: true });
@@ -374,13 +409,16 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
         // Verify 'Account Created!' message is displayed
         cy.contains('Account Deleted!');
 
+        // Take screenshot
+        cy.dynamicScreenshot('Automation_Exercise_Website_TC-15_Account-Deleted');
+
         // Click the 'Continue' button
         cy.get('[data-qa="continue-button"]').should('be.visible')
           .click();
       });
 
       // Take screenshot
-      cy.dynamicScreenshot('Automation_Exercise_Website_TC-15');
+      cy.dynamicScreenshot('Automation_Exercise_Website_TC-15_End');
     });
     
     // Test Case 16: Place Order: Login before Checkout
@@ -405,8 +443,8 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
         cy.url().should('include', 'login');
 
         // Enter Login Credentials
-        cy.get('[data-qa="login-email"]').should('be.visible').type(fakerData.loginEmail);
-        cy.get('[data-qa="login-password"]').should('be.visible').type(fakerData.loginPass);
+        cy.get('[data-qa="login-email"]').should('be.visible').type(fakerData.loginEmail).should('have.value', fakerData.loginEmail);
+        cy.get('[data-qa="login-password"]').should('be.visible').type(fakerData.loginPass).should('have.value', fakerData.loginPass);
 
         // Verify that the "Login" button is visible, then click
         cy.get('[data-qa="login-button"]').should('be.visible').click()
@@ -414,6 +452,9 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
         // Verify 'Logged in as Username' message
         cy.get(':nth-child(10) > a').should('be.visible')
           .should('contain', `Logged in as ${fakerData.loginUsername}`);
+        
+        // Take Screenshot
+        cy.dynamicScreenshot('Automation_Exercise_Website_TC-16_Login-Success');
 
         // Verify that the product is visible
         cy.get(':nth-child(29) > .product-image-wrapper > .single-products > .productinfo').should('be.visible');
@@ -466,11 +507,11 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
         cy.url().should('include', '/payment');
  
         // Enter payment details
-        cy.get('[data-qa="name-on-card"]').should('be.visible').type(fakerData.loginFullName);
-        cy.get('[data-qa="card-number"]').should('be.visible').type(fakerData.cardNumber);
-        cy.get('[data-qa="cvc"]').should('be.visible').type(fakerData.cvc);
-        cy.get('[data-qa="expiry-month"]').should('be.visible').type(fakerData.expiryMonth);
-        cy.get('[data-qa="expiry-year"]').should('be.visible').type(fakerData.expiryYear);
+        cy.get('[data-qa="name-on-card"]').should('be.visible').type(fakerData.loginFullName).should('have.value', fakerData.loginFullName);
+        cy.get('[data-qa="card-number"]').should('be.visible').type(fakerData.cardNumber).should('have.value', fakerData.cardNumber);
+        cy.get('[data-qa="cvc"]').should('be.visible').type(fakerData.cvc).should('have.value', fakerData.cvc);
+        cy.get('[data-qa="expiry-month"]').should('be.visible').type(fakerData.expiryMonth).should('have.value', fakerData.expiryMonth);
+        cy.get('[data-qa="expiry-year"]').should('be.visible').type(fakerData.expiryYear).should('have.value', fakerData.expiryYear);
         cy.get('[data-qa="pay-button"]').should('be.visible').click();
 
         // // Verify 'Your order has been placed successfully!' message is displayed
@@ -479,6 +520,9 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
    
         // Verify that payment is successful
         cy.url().should('include', 'payment_done');
+
+        // Take Screenshot
+        cy.dynamicScreenshot('Automation_Exercise_Website_TC-16_Payment-Successful');
    
         // Locate the 'Continue' button and click
         cy.get('[data-qa="continue-button"]').should('be.visible').click({ force: true });
@@ -492,12 +536,15 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
         // Verify 'Account Created!' message is displayed
         cy.contains('Account Deleted!');
 
+        // Take screenshot
+        cy.dynamicScreenshot('Automation_Exercise_Website_TC-16_Account-Deleted');
+
         // Click the 'Continue' button
         cy.get('[data-qa="continue-button"]').should('be.visible')
           .click();
 
         // Take screenshot
-        cy.dynamicScreenshot('Automation_Exercise_Website_TC-16');
+        cy.dynamicScreenshot('Automation_Exercise_Website_TC-16_End');
       });
     });
   });
