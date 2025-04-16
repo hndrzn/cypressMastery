@@ -183,6 +183,10 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
         cy.get('[data-qa="cvc"]').should('be.visible').type(fakerData.cvc).should('have.value', fakerData.cvc);
         cy.get('[data-qa="expiry-month"]').should('be.visible').type(fakerData.expiryMonth).should('have.value', fakerData.expiryMonth);
         cy.get('[data-qa="expiry-year"]').should('be.visible').type(fakerData.expiryYear).should('have.value', fakerData.expiryYear);
+        
+        // Take screenshot
+        cy.dynamicScreenshot('Automation_Exercise_Website_TC-14_CC-Details');
+        
         cy.get('[data-qa="pay-button"]').should('be.visible').click();
 
         // // Verify 'Your order has been placed successfully!' message is displayed
@@ -385,6 +389,10 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
         cy.get('[data-qa="cvc"]').should('be.visible').type(fakerData.cvc).should('have.value', fakerData.cvc);
         cy.get('[data-qa="expiry-month"]').should('be.visible').type(fakerData.expiryMonth).should('have.value', fakerData.expiryMonth);
         cy.get('[data-qa="expiry-year"]').should('be.visible').type(fakerData.expiryYear).should('have.value', fakerData.expiryYear);
+        
+        // Take screenshot
+        cy.dynamicScreenshot('Automation_Exercise_Website_TC-15_CC-Details');
+
         cy.get('[data-qa="pay-button"]').should('be.visible').click();
  
          // // Verify 'Your order has been placed successfully!' message is displayed
@@ -512,6 +520,10 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
         cy.get('[data-qa="cvc"]').should('be.visible').type(fakerData.cvc).should('have.value', fakerData.cvc);
         cy.get('[data-qa="expiry-month"]').should('be.visible').type(fakerData.expiryMonth).should('have.value', fakerData.expiryMonth);
         cy.get('[data-qa="expiry-year"]').should('be.visible').type(fakerData.expiryYear).should('have.value', fakerData.expiryYear);
+        
+        // Take screenshot
+        cy.dynamicScreenshot('Automation_Exercise_Website_TC-16_CC-Details');
+
         cy.get('[data-qa="pay-button"]').should('be.visible').click();
 
         // // Verify 'Your order has been placed successfully!' message is displayed
