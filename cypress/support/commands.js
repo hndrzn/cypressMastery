@@ -1,29 +1,3 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read  more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-
 import { generateData } from './generatedFakerCredentials';
 import { placeOrderData } from './generatedFakerCredentialsAutomationWebsite';
 
@@ -136,11 +110,11 @@ Cypress.Commands.add('parabankLogin', (username, password) => {
 
 Cypress.Commands.add('generateFakerData', () => {
   const fakerData = generateData();
-  cy.writeFile('cypress/fixtures/fakerData.json', fakerData);
+  cy.writeFile('cypress/fixtures/ParabankWebsite/parabankFaker.json', fakerData);
 });
 
 Cypress.Commands.add('placeOrderProcess', () => {
   cy.visit('https://automationexercise.com/');    
   const fakerData = placeOrderData();
-  cy.writeFile('cypress/fixtures/placeOrderData.json', fakerData);
+  cy.writeFile('cypress/fixtures/AutomationExerciseWebsite/placeOrderData.json', fakerData);
 });

@@ -5,7 +5,7 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
     
     // Test Case 14: Place Order: Register while Checkout
     it('Should Place Order: Register while Checkout', () => {
-      cy.readFile('cypress/fixtures/placeOrderData.json').then((fakerData) => {
+      cy.readFile('cypress/fixtures/AutomationExerciseWebsite/placeOrderData.json').then((fakerData) => {
         // Verify we're on the right website
         cy.url().should('include', 'automationexercise.com');
   
@@ -225,7 +225,7 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
 
     // Test Case 15: Place Order: Register before Checkout
     it('Should Place Order: Register before Checkout', () => {
-      cy.readFile('cypress/fixtures/placeOrderData.json').then((fakerData) => {
+      cy.readFile('cypress/fixtures/AutomationExerciseWebsite/placeOrderData.json').then((fakerData) => {
         // Verify we're on the right website
         cy.url().should('include', 'automationexercise.com');
   
@@ -431,7 +431,7 @@ describe('Automation Exercise Website - Place Order - Checkout Functionality (Te
     
     // Test Case 16: Place Order: Login before Checkout
     it('Should Place Order: Login before Checkout', () => {
-      cy.readFile('cypress/fixtures/placeOrderData.json').then((fakerData) => {
+      cy.readFile('cypress/fixtures/AutomationExerciseWebsite/placeOrderData.json').then((fakerData) => {
         // Verify we're on the right website
         cy.url().should('include', 'automationexercise.com');
   

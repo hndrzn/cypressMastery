@@ -1,6 +1,6 @@
 describe('Parabank Website Registration and Log-in Test with Fixtures', () => {
   it('Should successfully register with fixtures data', () => {
-    cy.fixture('parabankCredentials').then((credentials) => {
+    cy.fixture('ParabankWebsite/parabankCredentials').then((credentials) => {
       // Navigates to the Parabank Registration/Log-in Website
       cy.visit('https://parabank.parasoft.com/parabank/register.htm')
       // Checks if the PARABANK logo is visible to ensure that user is on the right website
@@ -33,7 +33,7 @@ describe('Parabank Website Registration and Log-in Test with Fixtures', () => {
 
   it('Should succesfully log-in with fixtures data', () => {
 
-    cy.fixture('parabankCredentials').then((credentials) => {
+    cy.fixture('ParabankWebsite/parabankCredentials').then((credentials) => {
       // Navigates to the Parabank Registration/Log-in Website
       cy.visit('https://parabank.parasoft.com/parabank/register.htm')
       // Checks if the PARABANK logo is visible to ensure that user is on the right website
