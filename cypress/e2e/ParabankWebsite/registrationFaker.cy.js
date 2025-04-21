@@ -1,5 +1,5 @@
-import RegistrationPage from '../../support/pageObjects/ParabankWebsite/fakerData/registrationPage';
-import LoginPage from '../../support/pageObjects/ParabankWebsite/fakerData/loginPage';
+import RegistrationPage from '../../support/pageObjects/ParabankWebsite/registrationPage';
+import LoginPage from '../../support/pageObjects/ParabankWebsite/loginPage';
 
 describe('Parabank Website Registration Test with Faker Data', () => {
   const registrationPage = new RegistrationPage();
@@ -19,15 +19,15 @@ describe('Parabank Website Registration Test with Faker Data', () => {
       registrationPage.verifySuccessMessage();
       cy.dynamicScreenshot('parabankRegistrationFaker');
     });
-  });
+  }); 
 
   it('Should successfully log-in with faker data', () => {
     cy.fixture('ParabankWebsite/parabankFaker').then((fakerData) => {
       loginPage.visit();
-      loginPage.verifyLogo();
+      loginPage.verifyLogo(); 
       loginPage.fillLoginForm(fakerData);
-      loginPage.submit();
-      loginPage.verifyWelcomeMessage(fakerData);
+      loginPage.submitLogin();
+      loginPage.verifyLoginSuccess(fakerData);
       cy.dynamicScreenshot('parabankLoginFaker');
     });
   });

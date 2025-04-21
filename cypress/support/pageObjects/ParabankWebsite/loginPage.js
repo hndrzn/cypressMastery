@@ -5,17 +5,17 @@ class LoginPage {
   }
 
   // Checks if the PARABANK logo is visible to ensure that user is on the right website
-  getLogo() {
+  verifyLogo() {
     return cy.get('.logo');
   }
 
   // Enter registered username
-  fillLoginForm(credentials) {
+  fillLoginForm(data) {
     cy.get('form > :nth-child(2) > .input').should('be.visible')
-      .type(credentials.username);
+      .type(data.username);
     // Enter registered password
     cy.get(':nth-child(4) > .input').should('be.visible')
-      .type(credentials.password);
+      .type(data.password);
   }
 
   // Click the 'LOG IN' button
@@ -25,9 +25,9 @@ class LoginPage {
   }
 
   // Verify login success message
-  verifyLoginSuccess(credentials) {
+  verifyLoginSuccess(data) {
     cy.get('.smallText').should('be.visible')
-      .contains(`Welcome ${credentials.firstName} ${credentials.lastName}`);
+      .contains(`Welcome ${data.firstName} ${data.lastName}`);
   }
 }
 
