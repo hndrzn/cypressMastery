@@ -11,6 +11,7 @@
     "parabankRegFixtures-test": "npx cypress run  --spec 'cypress/e2e/ParabankWebsite/registrationFixtures.cy.js' --browser chrome",
     "parabankFaker-test": "npx cypress run  --spec 'cypress/e2e/ParabankWebsite/registrationFaker.cy.js' --browser chrome",
     "placeOrderCheckout-test": "npx cypress run  --spec 'cypress/e2e/AutomationExerciseWebsite/checkout.cy.js' --browser chrome",
+    "petStoreAPI-test": "npx cypress run  --spec 'cypress/e2e/API-Testing/swaggerPetStore.cy.js' --browser chrome",
     "e2e-all-tests": "npx cypress run  --spec 'cypress/e2e/' --browser chrome"
   },
   "repository": {
@@ -26,7 +27,10 @@
   "homepage": "https://github.com/hndrzn/cypressMastery#readme",
   "dependencies": {
     "cypress": "^14.3.0",
-    "cypress-xpath": "^2.0.1"
+    "cypress-plugin-api": "^2.11.2",
+    "cypress-wait-until": "^3.0.2",
+    "cypress-xpath": "^2.0.1",
+    "dotenv": "^16.5.0"
   },
   "devDependencies": {
     "@cypress/xpath": "^2.0.3",
