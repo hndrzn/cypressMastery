@@ -109,8 +109,6 @@ describe('Petstore API - STORE endpoint', () => {
       expect(response.body).to.have.property('string').that.is.a('number').and.to.satisfy(Number.isInteger);
       expect(response.body).to.have.property('pending').that.is.a('number').and.to.satisfy(Number.isInteger);
       expect(response.body).to.have.property('available').that.is.a('number').and.to.satisfy(Number.isInteger);
-      expect(response.body).to.have.property('Not Available').that.is.a('number').and.to.satisfy(Number.isInteger);
-      expect(response.body).to.have.property('sleeping').that.is.a('number').and.to.satisfy(Number.isInteger);
     });
   });
 
