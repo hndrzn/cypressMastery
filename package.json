@@ -12,7 +12,7 @@
     "parabankFaker-test": "npx cypress run  --spec 'cypress/e2e/ParabankWebsite/registrationFaker.cy.js' --browser chrome",
     "placeOrderCheckout-test": "npx cypress run  --spec 'cypress/e2e/AutomationExerciseWebsite/checkout.cy.js' --browser chrome",
     "petStoreAPI-test": "npx cypress run  --spec 'cypress/e2e/API-Testing/swaggerPetStore.cy.js' --browser chrome",
-    "e2e-all-tests": "npx cypress run --spec 'cypress/e2e/**' --ignore 'cypress/e2e/API-Testing/localAPI_Requests.cy.js' --browser chrome"
+    "e2e-all-tests": "npx cypress run --spec 'cypress/e2e/' --browser chrome"
   },
   "repository": {
     "type": "git",

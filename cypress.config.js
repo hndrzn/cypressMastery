@@ -25,6 +25,7 @@ module.exports = defineConfig({
   },
   e2e: {
     baseUrl: process.env.API_BASE_URL || 'https://petstore.swagger.io/v2',
+    excludeSpecPattern: ['cypress/e2e/API-Testing/localAPI_Requests.cy.js'],
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
       // implement node event listeners here
