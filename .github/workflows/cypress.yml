@@ -39,7 +39,7 @@ jobs:
       
       # Step 5: Start local server
       - name: Start local server
-        run: cd backend &&  npm start &
+        run: cd backend && node server.js &
         env:
           CI: true
 
