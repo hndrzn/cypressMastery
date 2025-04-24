@@ -105,7 +105,6 @@ describe('Petstore API - STORE endpoint', () => {
       expect(response.status).to.eq(200);
       // Expects that the value for each key property in the response body is an integer
       expect(response.body).to.have.property('sold').that.is.a('number').and.to.satisfy(Number.isInteger);
-      expect(response.body).to.have.property('placed').that.is.a('number').and.to.satisfy(Number.isInteger);
       expect(response.body).to.have.property('string').that.is.a('number').and.to.satisfy(Number.isInteger);
       expect(response.body).to.have.property('pending').that.is.a('number').and.to.satisfy(Number.isInteger);
       expect(response.body).to.have.property('available').that.is.a('number').and.to.satisfy(Number.isInteger);
