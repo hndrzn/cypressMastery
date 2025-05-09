@@ -6,12 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "login-test": "npx cypress run  --spec 'cypress/e2e/SwagLabsWebsite/login.cy.js' --browser chrome",
-    "addToCartAndCheckout-test": "npx cypress run  --spec 'cypress/e2e/SwagLabsWebsite/addToCartAndCheckout.cy.js' --browser chrome",
-    "parabankReg-test": "npx cypress run  --spec 'cypress/e2e/ParabankWebsite/registration.cy.js' --browser chrome",
-    "parabankRegFixtures-test": "npx cypress run  --spec 'cypress/e2e/ParabankWebsite/registrationFixtures.cy.js' --browser chrome",
-    "parabankFaker-test": "npx cypress run  --spec 'cypress/e2e/ParabankWebsite/registrationFaker.cy.js' --browser chrome",
+    "addToCartAndCheckout-test": "npx cypress run  --config-file saucedemo.config.js --spec 'cypress/e2e/SwagLabsWebsite/addToCartAndCheckout.cy.js' --browser chrome",
+    "parabankReg-test": "npx cypress run  --config-file parabank.config.js --spec 'cypress/e2e/ParabankWebsite/registration.cy.js' --browser chrome",
+    "parabankRegFixtures-test": "npx cypress run  --config-file parabank.config.js --spec 'cypress/e2e/ParabankWebsite/registrationFixtures.cy.js' --browser chrome",
+    "parabankFaker-test": "npx cypress run  --config-file parabank.config.js --spec 'cypress/e2e/ParabankWebsite/registrationFaker.cy.js' --browser chrome",
     "placeOrderCheckout-test": "npx cypress run  --spec 'cypress/e2e/AutomationExerciseWebsite/checkout.cy.js' --browser chrome",
-    "petStoreAPI-test": "npx cypress run  --spec 'cypress/e2e/API-Testing/swaggerPetStore.cy.js' --browser chrome",
+    "petStoreAPI-test": "npx cypress run  --config-file saucedemo.config.js --spec 'cypress/e2e/API-Testing/swaggerPetStore.cy.js' --browser chrome",
+    "dataTables-test": "npx cypress run --config-file dataTables.config.js --spec 'cypress/e2e/data-tables-net/data-tables.cy.js'",
     "e2e-all-tests": "npx cypress run --spec 'cypress/e2e/' --browser chrome"
   },
   "repository": {
